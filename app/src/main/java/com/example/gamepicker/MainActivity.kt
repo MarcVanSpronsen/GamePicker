@@ -134,18 +134,14 @@ class MainActivity : AppCompatActivity() {
         viewModel.deleteGame(game)
     }
 
-    /**
-     * Called when the sort button is clicked.
-     *
-     */
+    //Called when the sort button is clicked.
+
     private fun onSortMenuOpened() {
         sortMenu.openMenu(this, btnSort, filteredGames)
     }
 
-    /**
-     * Method to show the search bar and hide the toolbar.
-     *
-     */
+    //Method to show the search bar and hide the toolbar.
+
     private fun onSearchBarOpened() {
         svSearch?.setQuery("", true)
         llSearch?.visibility = View.VISIBLE
@@ -153,10 +149,9 @@ class MainActivity : AppCompatActivity() {
         toolbar?.visibility = View.GONE
     }
 
-    /**
-     * Method to hide the search bar and show the toolbar.
-     *
-     */
+
+    //Method to hide the search bar and show the toolbar.
+
     private fun onSearchBarClosed() {
         svSearch?.setQuery("", true)
         llSearch?.visibility = View.GONE
@@ -175,14 +170,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    /**
-     * Method that is called when text is entered in search view.
-     *
-     * @param query entered string used as search query.
-     */
+    //Method that is called when text is entered in search view.
+    //@param query entered string used as search query.
+
     private fun filter(query: String) {
-        filteredGames = games.filter { product ->
-            product.Name.toLowerCase().contains(query.toLowerCase())
+        filteredGames = games.filter { game ->
+            game.Name.toLowerCase().contains(query.toLowerCase())
         } as MutableList<Game>
 
         gameAdapter.games = filteredGames
@@ -192,10 +185,6 @@ class MainActivity : AppCompatActivity() {
         onNoResults()
     }
 
-    /**
-     * Called after filtering products array to show or hide no results text view.
-     *
-     */
     private fun onNoResults() {
         if (gameAdapter.itemCount == 0) {
             tvNoResults.visibility = View.VISIBLE
